@@ -3,12 +3,12 @@ import { z } from "zod";
 export const VALIDATIONS_CONFIG = {
   phrase: {
     min: {
-      value: 2,
-      message: 'La frase debe tener al menos 2 caracteres'
+      value: 10,
+      message: 'Debe tener al menos 10 caracteres'
     },
     max: {
       value: 50,
-      message: 'La frase debe tener un maximo de 50 caracteres'
+      message: 'Debe tener un maximo de 50 caracteres'
     },
   }
 }
