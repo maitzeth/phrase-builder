@@ -8,10 +8,11 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   value: string;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
   onClear?: () => void;
+  error?: string;
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ label, id, value, onChange, onClear, ...props }, ref) => {
+  ({ label, id, value, onChange, onClear, error, ...props }, ref) => {
     return (
       <div className={styles.wrapper}>
         {label && (
@@ -33,8 +34,12 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             </button>
           )}
         </div>
+        {error && (
+          <p className={styles.error}>
+            {error}
+          </p>
+        )}
       </div>
     );
   }
 );
-
