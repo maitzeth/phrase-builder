@@ -12,6 +12,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         className={cn([styles.main, styles.primary, className])}
         disabled={disabled}
+        aria-disabled={disabled ? 'true' : 'false'}
         {...rest}
       >
         {children}
