@@ -25,7 +25,6 @@ export const PhraseForm = ({ handleCreateNewPhrase }: Props) => {
       });
 
       resetForm();
-      // setFieldValue('phrase', '');
     },
   });
 
@@ -58,7 +57,7 @@ export const PhraseForm = ({ handleCreateNewPhrase }: Props) => {
         />
       </div>
       <div className={styles.submitButton}>
-        <Button type="submit">Enviar</Button>
+        <Button type="submit" disabled={Object.keys(errors).length > 0}>Enviar</Button>
       </div>
     </form>
   );
