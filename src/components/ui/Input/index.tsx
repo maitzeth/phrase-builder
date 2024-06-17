@@ -24,10 +24,22 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
   onClear?: () => void;
   error?: string;
+  valueCount?: number;
+  maxValueCount?: number;
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ label, id, value, onChange, onClear, error, ...props }, ref) => {
+  ({
+    label,
+    id,
+    value,
+    onChange,
+    onClear,
+    error,
+    valueCount,
+    maxValueCount,
+    ...props
+  }, ref) => {
     return (
       <div className={styles.wrapper}>
         {label && (
@@ -43,6 +55,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             onChange={onChange}
             {...props}
             aria-errormessage={error}
+            maxLength={maxValueCount}
           />
           {value && value.length > 0 && (
             <button type="button" aria-label="clear search" onClick={onClear}>
@@ -50,11 +63,18 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             </button>
           )}
         </div>
-        {error && (
-          <p className={styles.error}>
-            {error}
-          </p>
-        )}
+        <div className={styles.textWrapper}>
+          {error && (
+            <p className={styles.error}>
+              {error}
+            </p>
+          )}
+          {maxValueCount && (
+            <p className={styles.count} aria-label={`characters written ${valueCount}`}>
+              {valueCount} {maxValueCount ? `/ ${maxValueCount}` : ''}
+            </p>
+          )}
+        </div>
       </div>
     );
   }

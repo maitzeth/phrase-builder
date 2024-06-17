@@ -1,5 +1,5 @@
 import { toFormikValidationSchema } from 'zod-formik-adapter';
-import { CREATE_PHRASE_BLUEPRINT } from '@/lib/constant';
+import { CREATE_PHRASE_BLUEPRINT, VALIDATIONS_CONFIG } from '@/lib/constant';
 import { useFormik } from 'formik';
 import { Input, Button } from '@/components/ui';
 import styles from './styles.module.css';
@@ -41,6 +41,8 @@ export const PhraseForm = () => {
           onClear={() => {
             setFieldValue('phrase', '');
           }}
+          maxValueCount={VALIDATIONS_CONFIG.phrase.max.value}
+          valueCount={values.phrase.length}
         />
       </div>
       <div className={styles.submitButton}>
