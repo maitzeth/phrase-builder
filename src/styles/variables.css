@@ -1,4 +1,10 @@
 :root {
+  --width-none: 100%;
+  --max-width-sm: 640px;
+  --max-width-md: 768px;
+  --max-width-lg: 1024px;
+  --max-width-xl: 1280px;
+
   --font-size-xs: 0.75rem;
   --font-size-sm: 0.875rem;
   --font-size-base: 1rem;
@@ -7,8 +13,11 @@
 
   --radius: 0.5rem;
 
+  --primary-color: #062639;
+  --black-color: #000000; 
+  --white-color: #EDF4EA;
   --border-color: rgb(228, 228, 231);
   --focus-color: #a1a1aa;
   --gray-color: #dfe6e9;
-  --danger-color: #e74c3c;
+  --danger-color: #E7301C;
 }
