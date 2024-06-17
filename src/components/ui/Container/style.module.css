@@ -1,0 +1,6 @@
+@import '../../../styles/variables.css';
+
+.main {
+  width: min(100% - 1rem, var(--max-width-lg));
+  margin-inline: auto;
+}

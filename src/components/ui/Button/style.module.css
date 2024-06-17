@@ -1,0 +1,21 @@
+@import '../../../styles/variables.css';
+
+.main {
+  font-weight: 500;
+  padding-inline: 1rem;
+  padding-block: .5rem;
+  font-size: var(--font-size-sm);
+  color: var(--white-color);
+  white-space: nowrap;
+  height: 2.5rem;
+  border-radius: var(--radius);
+  transition: all 150ms ease-in-out;
+}
+
+.primary {
+  background-color: var(--primary-color);
+
+  &:hover {
+    background-color: var(--black-color);
+  }
+}
