@@ -1,9 +1,10 @@
-function App() {
+import { Input } from '@/components/ui';
 
+function App() {
   return (
-    <>
-      <h1>qweqwe</h1>
-    </>
+    <div style={{ paddingInline: '40px' }}>
+      <Input value="test" label="Search" id="search" onChange={(event) => event} />
+    </div>
   )
 }
 
