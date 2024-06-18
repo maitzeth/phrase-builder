@@ -1,0 +1,33 @@
+@import './styles/variables.css';
+
+.container {
+  padding-block-start: 4rem;
+
+  header {
+    padding-block: 2rem;
+    padding-inline: 1rem;
+    
+    background-color: var(--gray-color);
+    border-radius: var(--radius);
+    margin-bottom: 5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    h1 {
+      font-size: var(--font-size-xl);
+    }
+
+    @media (min-width: 640px) {
+      padding-inline: 3rem;
+    }
+  }
+}
+
+.headerInner {
+  max-width: var(--max-width-sm);
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}

@@ -1,9 +1,10 @@
 import { PhraseForm } from '@/components/PhraseForm';
 import { PhraseRenderer } from '@/components/PhraseRenderer';
-import { Container, Input } from '@/components/ui';
+import { Container, Input, Button } from '@/components/ui';
 import { Phrase } from '@/types/phrase';
 import { debounce } from 'lodash';
 import { useMemo, useState } from 'react';
+import styles from './app.module.css';
 
 
 function App() {
@@ -61,15 +62,24 @@ function App() {
   );
 
   return (
-    <Container as="main">
-      <Input
-        id="search"
-        value={searchValue}
-        type="text"
-        placeholder="Buscar frase"
-        onChange={handleSearchChange}
-      />
-      <PhraseForm handleCreateNewPhrase={handleCreateNewPhrase} />
+    <Container as="main" className={styles.container}>
+      <header>
+        <div>
+          <h1>Creador de frases</h1>
+        </div>
+        <div>
+          <PhraseForm handleCreateNewPhrase={handleCreateNewPhrase} />
+        </div>
+      </header>
+      <div className={styles.headerInner}>
+        <Input
+          id="search"
+          value={searchValue}
+          type="text"
+          placeholder="Filtrar frase..."
+          onChange={handleSearchChange}
+        />
+      </div>
       <PhraseRenderer phrases={filteredPhrases} deletePhrase={handleDeletePhrase} />
     </Container>
   );
