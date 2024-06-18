@@ -1,13 +1,8 @@
-import { Phrase } from '@/types/phrase';
 import styles from './style.module.css';
 import { cva } from 'class-variance-authority';
 import { PhraseEmpty } from '@/components/PhraseEmpty';
 import { PhraseItem } from '@/components/PhraseItem';
-
-interface Props {
-  phrases: Phrase[];
-  deletePhrase: (id: string) => void;
-}
+import { usePhrases } from '@/hooks/usePhrases';
 
 const wrapperVariants = cva(
   styles.main, {
@@ -20,7 +15,8 @@ const wrapperVariants = cva(
   }
 );
 
-export const PhraseRenderer = ({ phrases, deletePhrase }: Props) => {
+export const PhraseRenderer = () => {
+  const { phrases, deletePhrase } = usePhrases();
   const emptyState = phrases.length > 0;
 
   return (

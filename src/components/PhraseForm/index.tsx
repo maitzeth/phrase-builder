@@ -3,14 +3,11 @@ import { CREATE_PHRASE_BLUEPRINT, VALIDATIONS_CONFIG } from '@/lib/constant';
 import { useFormik } from 'formik';
 import { Input, Button } from '@/components/ui';
 import styles from './styles.module.css';
-import { Phrase } from '@/types/phrase';
 import { v4 as uuidv4 } from 'uuid';
+import { usePhrases } from '@/hooks/usePhrases';
 
-interface Props {
-  handleCreateNewPhrase: (data: Phrase) => void;
-}
-
-export const PhraseForm = ({ handleCreateNewPhrase }: Props) => {
+export const PhraseForm = () => {
+  const { addPhrase } = usePhrases();
   const validationSchema = toFormikValidationSchema(CREATE_PHRASE_BLUEPRINT);
 
   const formik = useFormik({
@@ -19,7 +16,7 @@ export const PhraseForm = ({ handleCreateNewPhrase }: Props) => {
     },
     validationSchema,
     onSubmit: (values, { resetForm }) => {
-      handleCreateNewPhrase({
+      addPhrase({
         phrase: values.phrase,
         id: uuidv4(),
       });
