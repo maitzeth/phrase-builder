@@ -21,10 +21,18 @@ function App() {
     });
   };
 
+  const handleDeletePhrase = (id: string) => {
+    setPhrases((prev) => {
+      const newState = prev.filter((phrase) => phrase.id !== id);
+      localStorage.setItem('phrases', JSON.stringify(newState));
+      return newState;
+    });
+  };
+
   return (
     <Container as="main">
       <PhraseForm handleCreateNewPhrase={handleCreateNewPhrase} />
-      <PhraseRenderer phrases={phrases} />
+      <PhraseRenderer phrases={phrases} deletePhrase={handleDeletePhrase} />
     </Container>
   );
 }
