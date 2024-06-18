@@ -5,7 +5,7 @@ export const PhraseEmpty = () => {
   return (
     <div className={styles.main}>
       <PiEmptyThin aria-label="empty icon" size={60} />
-      <h3>No hay frases agregadas, agrega una.</h3>
+      <h3>No hay frases encontradas.</h3>
     </div>
   );
 };
