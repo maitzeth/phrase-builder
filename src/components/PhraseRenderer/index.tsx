@@ -5,6 +5,7 @@ import { PhraseItem } from '@/components/PhraseItem';
 import { usePhrasesStore } from '@/store/phrase';
 import { memo } from 'react';
 import { Phrase } from '@/types/phrase';
+import { AnimatePresence } from 'framer-motion';
 
 interface Props {
   phrases: Phrase[];
@@ -26,17 +27,21 @@ const PhraseRendererComponent = ({ phrases }: Props) => {
   const emptyState = phrases.length > 0;
 
   return (
-    <section className={wrapperVariants({ variant: emptyState ? 'default' : 'empty' })}>
-      {emptyState ? phrases.map(
-        (phrase) => (
-          <PhraseItem
-            key={phrase.id}
-            data={phrase}
-            deletePhrase={deletePhrase}
-          />
-        )
+    <ul className={wrapperVariants({ variant: emptyState ? 'default' : 'empty' })}>
+      {emptyState ? (
+        <AnimatePresence>
+          {phrases.map(
+            (phrase) => (
+              <PhraseItem
+                key={phrase.id}
+                data={phrase}
+                deletePhrase={deletePhrase}
+              />
+            )
+          )}
+        </AnimatePresence>
       ) : <PhraseEmpty />}
-    </section>
+    </ul>
   );
 };
 

@@ -1,5 +1,9 @@
 @import '../../styles/variables.css';
 
+.main {
+  width: 100%;
+}
+
 .inner {
   display: flex;
   justify-content: space-between;
