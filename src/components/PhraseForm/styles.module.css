@@ -3,4 +3,11 @@
 .form {
   display: flex;
   gap: 1rem;
+  flex-direction: column;
+}
+
+.submitButton {
+  button {
+    width: 100%;
+  }
 }

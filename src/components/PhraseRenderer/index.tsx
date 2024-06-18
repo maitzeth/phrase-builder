@@ -1,12 +1,13 @@
-import { Phrase } from '@/types/phrase';
 import styles from './style.module.css';
 import { cva } from 'class-variance-authority';
 import { PhraseEmpty } from '@/components/PhraseEmpty';
 import { PhraseItem } from '@/components/PhraseItem';
+import { usePhrasesStore } from '@/store/phrase';
+import { memo } from 'react';
+import { Phrase } from '@/types/phrase';
 
 interface Props {
   phrases: Phrase[];
-  deletePhrase: (id: string) => void;
 }
 
 const wrapperVariants = cva(
@@ -20,7 +21,8 @@ const wrapperVariants = cva(
   }
 );
 
-export const PhraseRenderer = ({ phrases, deletePhrase }: Props) => {
+const PhraseRendererComponent = ({ phrases }: Props) => {
+  const { deletePhrase } = usePhrasesStore();
   const emptyState = phrases.length > 0;
 
   return (
@@ -37,4 +39,6 @@ export const PhraseRenderer = ({ phrases, deletePhrase }: Props) => {
     </section>
   );
 };
+
+export const PhraseRenderer = memo(PhraseRendererComponent);
 

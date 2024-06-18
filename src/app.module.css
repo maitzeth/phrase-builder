@@ -1,7 +1,7 @@
 @import './styles/variables.css';
 
 .container {
-  padding-block-start: 4rem;
+  padding-block: 4rem;
 
   header {
     padding-block: 2rem;
