@@ -6,7 +6,11 @@ import styles from './styles.module.css';
 import { v4 as uuidv4 } from 'uuid';
 import { usePhrasesStore } from '@/store/phrase';
 
-export const PhraseForm = () => {
+interface Props {
+  openModal?: (val: boolean) => void;
+}
+
+export const PhraseForm = ({ openModal }: Props) => {
   const { addPhrase } = usePhrasesStore();
   const validationSchema = toFormikValidationSchema(CREATE_PHRASE_BLUEPRINT);
 
@@ -22,6 +26,7 @@ export const PhraseForm = () => {
       });
 
       resetForm();
+      openModal?.(false);
     },
   });
 
@@ -38,14 +43,14 @@ export const PhraseForm = () => {
     <form onSubmit={handleSubmit} className={styles.form}>
       <div>
         <Input
-          label="Frase"
+          label="Ingresar Frase"
           id="phrase"
           name="phrase"
           type="text"
           onChange={handleChange}
           onBlur={handleBlur}
           value={values.phrase}
-          placeholder="Ingresar frase"
+          placeholder="Frase..."
           error={formik.touched && errors.phrase}
           onClear={() => {
             setFieldValue('phrase', '');

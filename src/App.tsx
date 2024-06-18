@@ -1,34 +1,56 @@
 import { PhraseForm } from '@/components/PhraseForm';
 import { PhraseRenderer } from '@/components/PhraseRenderer';
-import { Container, Input } from '@/components/ui';
+import { Container, Input, Button, Modal } from '@/components/ui';
 import { usePhrases } from '@/hooks/usePhrases';
 import styles from './app.module.css';
 
 function App() {
-  const { handleSearchChange, onClearSearch, searchValue, filteredPhrases } = usePhrases();
+  
+
+  const {
+    handleSearchChange,
+    onClearSearch,
+    searchValue,
+    filteredPhrases
+  } = usePhrases();
 
   return (
-    <Container as="main" className={styles.container}>
-      <header>
-        <div>
-          <h1>Phrasify</h1>
+    <>
+      <Container as="main" className={styles.container}>
+        <header>
+          <div>
+            <h1>Phrasify</h1>
+          </div>
+          <div>
+            <Modal
+              trigger={({ handleOpen }) => {
+                return (
+                  <Button type="button" onClick={() => handleOpen(true)}>
+                    Nueva Frase
+                  </Button>
+                )
+              }}
+              render={({ handleOpen }) => {
+                return (
+                  <PhraseForm openModal={handleOpen} />
+                );
+              }}
+            />
+          </div>
+        </header>
+        <div className={styles.headerInner}>
+          <Input
+            id="search"
+            value={searchValue}
+            type="text"
+            placeholder="Filtrar frase..."
+            onChange={handleSearchChange}
+            onClear={onClearSearch}
+          />
         </div>
-        <div>
-          <PhraseForm />
-        </div>
-      </header>
-      <div className={styles.headerInner}>
-        <Input
-          id="search"
-          value={searchValue}
-          type="text"
-          placeholder="Filtrar frase..."
-          onChange={handleSearchChange}
-          onClear={onClearSearch}
-        />
-      </div>
-      <PhraseRenderer phrases={filteredPhrases} />
-    </Container>
+        <PhraseRenderer phrases={filteredPhrases} />
+      </Container>
+    </>
   );
 }
 
