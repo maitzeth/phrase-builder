@@ -3,10 +3,10 @@ import { PhraseRenderer } from '@/components/PhraseRenderer';
 import { Container, Input, Button, Modal } from '@/components/ui';
 import { usePhrases } from '@/hooks/usePhrases';
 import styles from './app.module.css';
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
 
 function App() {
-  
-
   const {
     handleSearchChange,
     onClearSearch,
@@ -14,18 +14,36 @@ function App() {
     filteredPhrases
   } = usePhrases();
 
+  useGSAP(() => {
+    const tl = gsap.timeline();
+
+    tl.to('#title', {
+      opacity: 1,
+      delay: 0.3,
+    });
+
+    tl.to('#button', {
+      opacity: 1,
+    })
+  });
+
   return (
     <>
       <Container as="main" className={styles.container}>
         <header>
           <div>
-            <h1>Phrasify</h1>
+            <h1 id="title">Phrasify</h1>
           </div>
           <div>
             <Modal
               trigger={({ handleOpen }) => {
                 return (
-                  <Button type="button" onClick={() => handleOpen(true)}>
+                  <Button
+                    type="button"
+                    onClick={() => handleOpen(true)}
+                    id="button"
+                    className={styles.actionBtn}
+                  >
                     Nueva Frase
                   </Button>
                 )
