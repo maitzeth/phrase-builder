@@ -1,0 +1,24 @@
+@import '../../styles/variables.css';
+
+.inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.titleWrapper {
+  h3 {
+    font-size: var(--font-size-lg);
+  }
+}
+
+.actionWrapper {
+  flex-shrink: 0;
+  
+  > button {
+    display: flex;
+    padding: 0.5rem;
+    background-color: var(--danger-color);
+    border-radius: var(--radius);
+  }
+}

@@ -7,7 +7,7 @@ export const VALIDATIONS_CONFIG = {
       message: 'Debe tener al menos 10 caracteres'
     },
     max: {
-      value: 50,
+      value: 100,
       message: 'Debe tener un maximo de 50 caracteres'
     },
   }
@@ -15,9 +15,9 @@ export const VALIDATIONS_CONFIG = {
 
 export const CREATE_PHRASE_BLUEPRINT = z.object({
   phrase: z
-    .string()
+    .string({ message: 'Requerido' })
     .min(VALIDATIONS_CONFIG.phrase.min.value, VALIDATIONS_CONFIG.phrase.min.message)
-    .max(VALIDATIONS_CONFIG.phrase.max.value, VALIDATIONS_CONFIG.phrase.max.message),
+    .max(VALIDATIONS_CONFIG.phrase.max.value, VALIDATIONS_CONFIG.phrase.max.message)
 });
 
 

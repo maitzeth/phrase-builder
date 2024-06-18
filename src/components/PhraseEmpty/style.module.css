@@ -1,0 +1,11 @@
+@import '../../styles/variables.css';
+
+.main {
+  text-align: center;
+
+  h3 {
+    color: var(--primary-color);
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+}
