@@ -4,10 +4,10 @@ import { useFormik } from 'formik';
 import { Input, Button } from '@/components/ui';
 import styles from './styles.module.css';
 import { v4 as uuidv4 } from 'uuid';
-import { usePhrases } from '@/hooks/usePhrases';
+import { usePhrasesStore } from '@/store/phrase';
 
 export const PhraseForm = () => {
-  const { addPhrase } = usePhrases();
+  const { addPhrase } = usePhrasesStore();
   const validationSchema = toFormikValidationSchema(CREATE_PHRASE_BLUEPRINT);
 
   const formik = useFormik({
