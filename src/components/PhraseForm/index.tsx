@@ -47,7 +47,7 @@ export const PhraseForm = ({ handleCreateNewPhrase }: Props) => {
           onChange={handleChange}
           onBlur={handleBlur}
           value={values.phrase}
-          placeholder="Enter phrase"
+          placeholder="Ingresar frase"
           error={formik.touched && errors.phrase}
           onClear={() => {
             setFieldValue('phrase', '');

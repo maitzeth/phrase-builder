@@ -2,8 +2,9 @@
 
 .main {
   display: flex;
+  width: 100%;
   background-color: var(--white-color);
-  padding: 1.5rem;
+  padding: 1rem;
   flex-direction: column;
   border: 1px solid var(--border-color);
   border-radius: var(--radius);

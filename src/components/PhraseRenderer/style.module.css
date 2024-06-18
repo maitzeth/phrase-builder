@@ -1,0 +1,25 @@
+@import '../../styles/variables.css';
+
+.main {
+  max-width: var(--max-width-sm);
+  margin-inline: auto;
+  border-radius: var(--radius);
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--border-color);
+  padding: 0.8rem;
+  
+  display: flex;
+  gap: 0.75rem;
+}
+
+.default {
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.empty {
+  min-height: 400px;
+  justify-content: center;
+  align-items: center;
+}

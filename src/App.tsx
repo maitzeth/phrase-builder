@@ -2,10 +2,11 @@ import { PhraseForm } from '@/components/PhraseForm';
 import { Container } from '@/components/ui';
 import { Phrase } from '@/types/phrase';
 import { useState } from 'react';
+import { PhraseRenderer } from '@/components/PhraseRenderer';
 
 
 function App() {
-  const [, setPhrases] = useState<Phrase[]>(() => {
+  const [phrases, setPhrases] = useState<Phrase[]>(() => {
     const savedPhrases = localStorage.getItem('phrases');
     return savedPhrases ? JSON.parse(savedPhrases) : [];
   });
@@ -23,6 +24,7 @@ function App() {
   return (
     <Container as="main">
       <PhraseForm handleCreateNewPhrase={handleCreateNewPhrase} />
+      <PhraseRenderer phrases={phrases} />
     </Container>
   );
 }
