@@ -41,6 +41,7 @@ export const PhraseForm = ({ handleCreateNewPhrase }: Props) => {
     <form onSubmit={handleSubmit} className={styles.form}>
       <div>
         <Input
+          label="Frase"
           id="phrase"
           name="phrase"
           type="text"
@@ -57,7 +58,12 @@ export const PhraseForm = ({ handleCreateNewPhrase }: Props) => {
         />
       </div>
       <div className={styles.submitButton}>
-        <Button type="submit" disabled={Object.keys(errors).length > 0}>Enviar</Button>
+        <Button
+          type="submit"
+          disabled={Object.keys(errors).length > 0}
+        >
+          Enviar
+        </Button>
       </div>
     </form>
   );

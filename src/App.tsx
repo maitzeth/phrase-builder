@@ -1,6 +1,6 @@
 import { PhraseForm } from '@/components/PhraseForm';
 import { PhraseRenderer } from '@/components/PhraseRenderer';
-import { Container, Input, Button } from '@/components/ui';
+import { Container, Input } from '@/components/ui';
 import { Phrase } from '@/types/phrase';
 import { debounce } from 'lodash';
 import { useMemo, useState } from 'react';
@@ -47,17 +47,23 @@ function App() {
   );
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchValue(event.target.value);
-    debouncedSetSearchTerm(event.target.value);
+    const { value } = event.target
+    setSearchValue(value);
+    debouncedSetSearchTerm(value);
   };
+
+  const onClearSearch = () => {
+    setSearchValue('');
+    setSearchTerm('');
+  }
 
   /**
    * Filter phrases based on the search term.
    */
   const filteredPhrases = useMemo(
-    () => phrases.filter((phrase) =>
-      phrase.phrase.toLowerCase().includes(searchTerm.toLowerCase())
-    ),
+    () => phrases.filter((phrase) => {
+      return phrase.phrase.toLowerCase().includes(searchTerm.toLowerCase());
+    }),
     [phrases, searchTerm]
   );
 
@@ -65,7 +71,7 @@ function App() {
     <Container as="main" className={styles.container}>
       <header>
         <div>
-          <h1>Creador de frases</h1>
+          <h1>Phrasify</h1>
         </div>
         <div>
           <PhraseForm handleCreateNewPhrase={handleCreateNewPhrase} />
@@ -78,6 +84,7 @@ function App() {
           type="text"
           placeholder="Filtrar frase..."
           onChange={handleSearchChange}
+          onClear={onClearSearch}
         />
       </div>
       <PhraseRenderer phrases={filteredPhrases} deletePhrase={handleDeletePhrase} />

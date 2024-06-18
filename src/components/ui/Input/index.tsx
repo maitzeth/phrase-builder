@@ -45,6 +45,11 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         {label && (
           <label htmlFor={id}>{label}</label>
         )}
+        {maxValueCount && (
+          <p className={styles.count} aria-label={`characters written ${valueCount}`}>
+            {valueCount} {maxValueCount ? `/ ${maxValueCount}` : ''}
+          </p>
+        )}
         <div className={inputVariants({ variant: error ? 'error' : 'default' })}>
           <input
             type="text"
@@ -67,11 +72,6 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           {error && (
             <p className={styles.error}>
               {error}
-            </p>
-          )}
-          {maxValueCount && (
-            <p className={styles.count} aria-label={`characters written ${valueCount}`}>
-              {valueCount} {maxValueCount ? `/ ${maxValueCount}` : ''}
             </p>
           )}
         </div>
