@@ -22,7 +22,7 @@ export const usePhrases = () => {
    * Debounce function from lodash to limit the rate of updates to the search term.
    */
   const debouncedSetSearchTerm = useMemo(
-    () => debounce((term: string) => setSearchTerm(term), 1000),
+    () => debounce((term: string) => setSearchTerm(term), 400),
     []
   );
 
